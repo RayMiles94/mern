@@ -4,6 +4,8 @@ var corp = require('cors');
 
 app.use(corp());
 
+app.disable('x-powered-by');
+
 app.get('/', function (req, res) {
     res.json({ data:"work"  });
     console.log('log into root server');

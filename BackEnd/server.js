@@ -3,6 +3,7 @@
 const express = require("express"); 
 const mongoose = require("mongoose"); 
 const bodyParser = require('body-parser');
+const cors =  require('cors');
 
 //Connexion à la base de donnée
 mongoose
@@ -31,20 +32,23 @@ const urlencodedParser = bodyParser.urlencoded({
 app.use(urlencodedParser);
 app.use(bodyParser.json());
 
-//Définition des CORS
+//Définition des 
+app.use(cors());
+/*
 app.use(function (req, res, next) {
-  /*
+  
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Credentials', true);
-  */
+  
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Credentials', true)
     next();
 });
+*/
 
 //On définit la route Hello
 app.get('/',function(req,res){
