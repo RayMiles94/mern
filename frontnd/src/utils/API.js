@@ -7,6 +7,41 @@ const headers = {
 
 const burl = "http://127.0.0.1:8800";
 
+
+export default {
+  login: function(email, password) {
+    return axios.post(
+      `${burl}/user/login`,
+        {
+          params: {
+            email,
+            password
+          } 
+        }  
+      ,
+      {
+        headers: headers
+      }
+    );
+  },
+  signup: function(email, password) {
+    return axios.post(`${burl}/user/signup`, { 
+      email,
+      password
+    }, { 
+      headers: headers 
+    });
+  },
+
+  isAuth: function() {
+    return localStorage.getItem("token") !== null;
+  },
+  logout: function() {
+    localStorage.clear();
+  }
+}; 
+
+/*
 export default {
   login: function(email, password) {
     var res = "Admin";
@@ -36,29 +71,4 @@ export default {
     localStorage.clear();
   }
 };
-
-/*
-export default {
-  login: function(email, password) {
-    return axios.post(
-      `${burl}/user/login`,
-      {
-        email,
-        password
-      },
-      {
-        headers: headers
-      }
-    );
-  },
-  signup: function(send) {
-    return axios.post(`${burl}/user/signup`, send, { headers: headers });
-  },
-
-  isAuth: function() {
-    return localStorage.getItem("token") !== null;
-  },
-  logout: function() {
-    localStorage.clear();
-  }
-}; */
+*/

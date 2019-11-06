@@ -31,16 +31,16 @@ const urlencodedParser = bodyParser.urlencoded({
 
 app.use(urlencodedParser);
 app.use(bodyParser.json());
+app.use('/public', express.static(__dirname + '/public'));
 
-//Définition des 
-app.use(cors());
-/*
+//Définition des CORS
+// app.use(cors());
 app.use(function (req, res, next) {
   
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Credentials', true);
+   // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+   // res.setHeader('Access-Control-Allow-Origin', '*');
+   // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+   // res.setHeader('Access-Control-Allow-Credentials', true);
   
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
     res.header('Access-Control-Allow-Origin', '*');
@@ -48,7 +48,6 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Credentials', true)
     next();
 });
-*/
 
 //On définit la route Hello
 app.get('/',function(req,res){

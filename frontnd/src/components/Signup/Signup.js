@@ -18,7 +18,7 @@ export class Signup extends React.Component {
     if (!email || email.length === 0) return;
     if (!password || password.length === 0 || password !== cpassword) return;
     try {
-      const { data } = await API.signup( { email, password } );
+      const { data } = await API.signup(  email, password );
       localStorage.setItem("token", data.token);
       window.location = "/dashboard";
     } catch (error) {

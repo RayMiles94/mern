@@ -2,8 +2,8 @@ const User = require("../../schema/schemaUser.js");
 const passwordHash = require("password-hash");
 
 async function signup(req, res) {
-  const { password, email } = req.query;
-  //console.log(req.query);
+  console.log('someone sign up using post request');
+  const { password, email } = req.body;
   if (!email || !password) {
       
     //Le cas où l'email ou bien le password ne serait pas soumit ou nul
@@ -43,13 +43,17 @@ async function signup(req, res) {
 }
 
 async function login(req, res) {
-  const { password, email } = req.query;
+  console.log('someone login using post request');
+
+  const { password, email } = req.body.params;
+
   if (!email || !password) {
     //Le cas où l'email ou bien le password ne serait pas soumit ou nul
     return res.status(400).json({
       text: "Requête invalide"
     });
   }
+
   try {
     // On check si l'utilisateur existe en base
     const findUser = await User.findOne({ email });
@@ -70,6 +74,7 @@ async function login(req, res) {
       error
     });
   }
+
 }
 
 //On exporte nos deux fonctions
