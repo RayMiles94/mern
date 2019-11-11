@@ -7,3 +7,4 @@ EXPOSE 8080
 CMD["node", "server.js"]
 #  build docker with command : docker build -t <name of image>
 #  to see if its work : docker images
+# https://nodejs.org/de/docs/guides/nodejs-docker-webapp/
